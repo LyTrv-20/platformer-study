@@ -3,6 +3,7 @@ package inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import gamestates.Gamestates;
 import main.GamePanel;
 
 import utils.Constants.DIRECTION;
@@ -16,50 +17,32 @@ public class keyboardInputs implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        switch(e.getKeyCode()){
-            case KeyEvent.VK_A:
-                panel.getGame().getPlayer().setL(true);
+        switch (Gamestates.state) {
+            case PLAYING:
+                panel.getGame().getPlaying().keyPressed(e);
                 break;
-            case KeyEvent.VK_D:
-                panel.getGame().getPlayer().setR(true);
+            case MENU:
+                panel.getGame().getMenu().keyPressed(e);
                 break;
-            case KeyEvent.VK_W:
-                panel.getGame().getPlayer().setJump(true);
-                break;
-            case KeyEvent.VK_S:
-                
-                break;
-            case KeyEvent.VK_Q:
-                panel.getGame().getPlayer().setAttack(true);
+            default:
                 break;
         }
-        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        switch(e.getKeyCode()){
-            case KeyEvent.VK_A:
-                panel.getGame().getPlayer().setL(false);
+        switch (Gamestates.state) {
+            case MENU:
+                panel.getGame().getMenu().keyReleased(e);
                 break;
-            case KeyEvent.VK_D:
-                panel.getGame().getPlayer().setR(false);
-                break;
-            case KeyEvent.VK_W:
-                panel.getGame().getPlayer().setJump(false);
-                break;
-            case KeyEvent.VK_S:
-                break;
-            case KeyEvent.VK_Q:
-                panel.getGame().getPlayer().setAttack(false);
+            case PLAYING:
+                panel.getGame().getPlaying().keyReleased(e);
+            default:
                 break;
         }
     }

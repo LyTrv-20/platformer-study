@@ -10,9 +10,16 @@ import javax.imageio.ImageIO;
 import main.Game;
 
 public class LoadSave {
-    public static final String PLAYER_ATLAS = "player/piratewSword.png";
-    public static final String LEVEL_ATLAS = "level/outside_sprites.png";
-    public static final String LEVEL_ONE_DATA = "level/level_one_data.png";
+    public static final String PLAYER_ATLAS = "entity\\piratewSword.png";
+    public static final String LEVEL_ATLAS = "scene\\outside_sprites.png";
+    public static final String LEVEL_ONE_DATA = "lvls/level_one_data.png";
+    public static final String MENU_BUTTONS = "UI\\button_atlas.png";
+    public static final String MENU_BG = "UI\\menu_background.png";
+    public static final String PAUSE_BG = "UI\\pause_menu.png";
+    public static final String SOUND_BUTTON = "UI\\sound_button.png";
+    public static final String URM_BUTTONS = "UI\\urm_buttons.png";
+    public static final String VOLUME_BUTONS = "UI\\volume_buttons.png";
+    
     
     public static BufferedImage getSpriteAtlas(String dest){
         BufferedImage img = null;

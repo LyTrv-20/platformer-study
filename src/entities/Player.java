@@ -15,7 +15,7 @@ public class Player extends Entity {
 	private int playerAction = IDLE;
 	private boolean moving = false, attacking = false;
 	private boolean left, up, right, down, jump;
-	private float playerSpeed = 1.5f;
+	private float playerSpeed = 1.0f * Game.SCALE;
 	private int[][] lvlData;
 	private float xDrawOffset = 20 * Game.SCALE;
 	private float yDrawOffset = 3 * Game.SCALE
@@ -31,7 +31,7 @@ public class Player extends Entity {
 	public Player(float x, float y, int width, int height) {
 		super(x, y, width, height);
 		loadAnimations();
-		initHitbox(x, y, 24 * Game.SCALE, 29 * Game.SCALE);
+		initHitbox(x, y, (int)(26 * Game.SCALE), (int)(30.0f * Game.SCALE));
 
 	}
 
@@ -43,7 +43,7 @@ public class Player extends Entity {
 
 	public void render(Graphics g) {
 		g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x - xDrawOffset), (int) (hitbox.y - yDrawOffset), width, height, null);
-		drawHitbox(g);
+		// drawHitbox(g);
 	}
 
 	private void updateAnimationTick() {
@@ -145,7 +145,6 @@ public class Player extends Entity {
 		} else {
 			hitbox.x = GetEntityPosNextToWall(hitbox, xSpeed);
 		}
-		System.out.println(airSpeed + " | " + inAir);
 	}
 
 	private void loadAnimations() {
@@ -164,7 +163,6 @@ public class Player extends Entity {
 		this.lvlData = lvlData;
 		if (!HelpMethods.ISEntityOnFloor(hitbox, lvlData))
 			inAir = true;
-
 	}
 
 	public void resetBool() {
